@@ -29,10 +29,10 @@ if st.button("Check"):
 
         if prediction[0][1] > 0.5:
              st.error("🔍 This text is likely **AI-generated**.")
-             st.error(prediction[0][0])
+             st.error(prediction[0][1])
 
         else:
              st.success("✅ This text is likely **Human-written**.")
-             st.success(prediction[0][1])
+             st.success(prediction[0][0])
 
 
