@@ -25,13 +25,9 @@ if st.button("Check"):
         st.warning("Please enter a sentence before submitting.")
     else:
         transformed_input = vectorizer.transform([user_input])
-        prediction = model.predict_proba(transformed_input)
+        prediction = model.predict(transformed_input)
 
-        if prediction[0] >= 0.5:
+        if prediction[0] == 1:
             st.error("🔍 This text is likely **AI-generated**.")
-            st.error(prediction)
         else:
             st.success("✅ This text is likely **Human-written**.")
-            st.success(prediction)
-
-
