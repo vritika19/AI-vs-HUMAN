@@ -28,7 +28,7 @@ if st.button("Check"):
         prediction = list(model.predict_proba(transformed_input))
         st.error(prediction[0])
 
-        if prediction[0][1] > 0.625:
+        if prediction[0][1] > 0.5:
              st.error("🔍 This text is likely **AI-generated**.")
         else:
              st.success("✅ This text is likely **Human-written**.")
