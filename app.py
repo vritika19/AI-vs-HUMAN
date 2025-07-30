@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
 from nltk.corpus import stopwords
+nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 # Load model and vectorizer
