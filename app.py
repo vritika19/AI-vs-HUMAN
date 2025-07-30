@@ -2,8 +2,33 @@ import streamlit as st
 import joblib
 
 # Load model and vectorizer
-vectorizer = joblib.load('vectorizer.pkl')
-model = joblib.load('logistic_model.pkl')
+#vectorizer = joblib.load('vectorize.pkl')
+
+from textstat import flesch_reading_ease
+
+def flesch_score(text):
+    try:
+        return flesch_reading_ease(text)
+    except:
+        return 0 
+
+def extract_features(text):
+    import re
+
+    words = text.split()
+    word_count = len(words)
+    comma_count = text.count(',')
+    stop_word_ratio = sum(1 for w in words if w.lower() in stop_words) / (word_count + 1e-6)
+    repetition_ratio = len(words) / (len(set(words)) + 1e-6)
+    lexical_diversity = len(set(words)) / (word_count + 1e-6)
+    first_person_count = sum(1 for w in words if w.lower() in {'i', 'me', 'my', 'mine'})
+    flesch = flesch_score(text)
+
+    return [[word_count, comma_count, stop_word_ratio, repetition_ratio,
+             lexical_diversity, first_person_count, flesch]]
+
+
+model = joblib.load('Log_Model')
 
 # Streamlit UI
 st.set_page_config(page_title="AI Text Detector", page_icon="🤖", layout="centered")
@@ -24,8 +49,8 @@ if st.button("Check"):
     if user_input.strip() == "":
         st.warning("Please enter a sentence before submitting.")
     else:
-        transformed_input = vectorizer.transform([user_input])
-        prediction = list(model.predict_proba(transformed_input))
+        ex_f = extracted_features(user_input)
+        prediction = list(model.predict_proba(ex_f))
 
         if prediction[0][1] > 0.5:
              st.error("🔍 This text is likely **AI-generated**.")
