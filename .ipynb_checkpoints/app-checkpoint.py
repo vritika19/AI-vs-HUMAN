@@ -27,7 +27,7 @@ if st.button("Check"):
         transformed_input = vectorizer.transform([user_input])
         prediction = list(model.predict_proba(transformed_input))
 
-        if prediction[0][1] > 0.5:
+        if prediction[0][1] > 0.625:
              st.error("🔍 This text is likely **AI-generated**.")
              st.error(prediction[0][1])
 
