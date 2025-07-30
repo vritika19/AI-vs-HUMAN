@@ -1,5 +1,7 @@
 import streamlit as st
 import joblib
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words('english'))
 
 # Load model and vectorizer
 #vectorizer = joblib.load('vectorize.pkl')
@@ -49,7 +51,7 @@ if st.button("Check"):
     if user_input.strip() == "":
         st.warning("Please enter a sentence before submitting.")
     else:
-        ex_f = extract_features(user_input)
+        ex_f = extracted_features(user_input)
         prediction = list(model.predict_proba(ex_f))
 
         if prediction[0][1] > 0.5:
