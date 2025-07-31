@@ -82,7 +82,7 @@ Once running, input your text to get real-time classification: **AI-generated** 
 
 ---
 
-##�Acknowledgements
+## Acknowledgements
 
 - Image credit: [akerink.com](https://akerink.com)
 - Built using:
