@@ -54,7 +54,7 @@ The aim is to explore subtle linguistic features that differentiate AI-generated
 
 ### 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/aivshuman.git
+git clone https://github.com/vritika19/AI-vs-HUMAN.git
 cd aivshuman
 ```
 
