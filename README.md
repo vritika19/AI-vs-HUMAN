@@ -32,13 +32,6 @@ The aim is to explore subtle linguistic features that differentiate AI-generated
   - Stemming  
   - Lemmatization  
 
-- **Feature Engineering**:
-  - Flesch reading ease score  
-  - Word count  
-  - Comma and punctuation frequency  
-  - Stopword ratio  
-  - First-person pronoun frequency  
-
 - **Machine Learning Models**:
   - Logistic Regression  
   - Multinomial Naive Bayes  
